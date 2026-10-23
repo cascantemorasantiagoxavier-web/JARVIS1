@@ -27,13 +27,22 @@ junto con el servidor en Render.
 - **Datos locales**: memoria, tareas, conversación y proyectos de clips en `localStorage` del navegador.
   El token del servidor también (equivalente al Keystore de Android). Los datos de Google Maps se quitan
   antes de guardar ([[05-DECISIONS/ADR-016-apis-del-usuario|ADR-016]]).
-- **Qué no hace la web**: notas de Obsidian, cámara, contactos, SMS, alarmas del sistema, habilidades
-  de la app. Llamar, rutas, compartir y calendario dejan un botón que la persona toca.
+- **Foto y dictado** (añadidos el mismo día): la cámara o una imagen elegida se reduce a JPEG en el
+  navegador y va a `/api/vision/analyze` (tarjeta, recibo, documento o pregunta libre); el dictado graba
+  con `MediaRecorder` y va a `/api/audio/transcribe`, y el texto queda en el cuadro para revisarlo. Solo
+  por toque; nada se guarda salvo una miniatura en la conversación. Lo leído de una foto entra al
+  historial marcado como dato, no como instrucción.
+- **Instalable y sin conexión**: `sw.js` primero la red y la copia local solo sin conexión; nunca
+  intercepta `/api` ni `/health`. Iconos PNG generados desde los SVG (`npm run build-icons`). En Android
+  los avisos se muestran con `registration.showNotification`.
+- **Copia de seguridad**: exportar/importar un JSON (sin el token) para pasar memoria y tareas a otro equipo.
+- **Qué no hace la web**: notas de Obsidian, contactos, SMS, alarmas del sistema, habilidades de la app.
+  Llamar, rutas, compartir y calendario dejan un botón que la persona toca.
 
 ## Consecuencias
 + Una sola URL (`https://<servicio>.onrender.com/`), sin instalar; probada en Chromium real (Playwright)
   en local y en CI, incluida la voz WebRTC contra un par simulado.
 − `localStorage` no está cifrado: el token queda expuesto si alguien usa ese navegador o si hubiera XSS
   (mitigado con CSP y DOM seguro). «Borrar todo» en Ajustes lo elimina.
-− Avisos de tareas solo con la página abierta (sin service worker ni push).
+− Avisos de tareas solo con la página o la app instalada abierta (sin notificaciones push del servidor).
 − Dos implementaciones de herramientas (Kotlin y JS) que deben mantenerse alineadas con el contrato.

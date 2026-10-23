@@ -10,7 +10,7 @@ actualizado: 2026-10-23
 Versión 0.1 + habilidades + **JARVIS Web**. Código en `cascantemorasantiagoxavier-web/JARVIS`, rama
 `jarvis-v0.1-habilidades` (`master` es su proyecto anterior, intacto); esta KB en el repo privado
 `JARVIS1` (`main`). GitHub Actions en verde: núcleo, **APK compilado con AGP** (publicado en la Release
-`jarvis-ultimo`) y pruebas Robolectric de la app. Backend 84 pruebas + 9 de navegador (Chromium real).
+`jarvis-ultimo`) y pruebas Robolectric de la app. Backend 85 pruebas + 14 de navegador (Chromium real): chat, voz, foto, dictado, paneles, copia de seguridad, instalable y sin conexión.
 El usuario prefiere la **web**: el servidor sirve el HUD en `/` ([[05-DECISIONS/ADR-018-jarvis-web|ADR-018]]).
 Nada se ha probado todavía contra OpenAI ni OpusClip reales, ni en un teléfono.
 

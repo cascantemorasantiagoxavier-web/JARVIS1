@@ -32,6 +32,9 @@ actualizado: 2026-10-23
 - [x] JARVIS Web (`backend/public`): HUD, chat con herramientas, voz WebRTC, paneles; 6 pruebas de
       servidor + 9 en Chromium real. ADR-018.
 
+- [x] JARVIS Web completa: foto, dictado, instalable (service worker, iconos), copia de seguridad,
+      modo sin conexión; 85 + 14 pruebas.
+
 ## Pendiente (requiere al usuario o un entorno sin bloqueos)
 - [ ] Compilar con AGP y generar el APK: listo el flujo de GitHub Actions (`.github/workflows/build.yml`,
       validado con actionlint); se ejecutará con el primer push. Alternativa: `scripts/build-apk.sh`.

@@ -137,3 +137,18 @@ privacidad `private`; **voz WebRTC real** contra un segundo `RTCPeerConnection` 
 
 Bugs encontrados por estas pruebas y corregidos: el panel lateral tapaba el menú (no se podía cambiar
 de panel); el globo se solapaba con el estado y el botón; punto doble tras «p. m.» al crear tareas.
+
+## Ronda: JARVIS Web completa (foto, dictado, instalable, copia, sin conexión)
+
+| Suite | Resultado | Clasificación | Dónde |
+|---|---|---|---|
+| Backend `npm test` | 85/85 | **AUTOMATIZADO** | local |
+| JARVIS Web `npm run test:e2e` | 14/14 | **AUTOMATIZADO** (Chromium 1194) | local |
+| Foto con OpenAI real / dictado con OpenAI real | — | **NO TESTEADO** | sin clave ni red |
+| Instalar en un teléfono real, avisos de Android | — | **NO TESTEADO** | sin dispositivo |
+
+Nuevas pruebas de navegador: foto de tarjeta (la imagen llega como JPEG reducido; el servidor valida los
+bytes y pide salida estricta; los campos vacíos se muestran «no se lee»; «Recordar» guarda en memoria),
+dictado (micrófono simulado de Chromium → WebM real → transcripción simulada → texto en el cuadro),
+clima desde el menú sin llamar al modelo, copia descargada sin token y restaurada con confirmación,
+service worker que controla la página, abre en modo sin conexión y responde la hora en local.
