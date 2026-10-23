@@ -24,6 +24,9 @@ emulador ni teléfono. **No existe APK.**
    leer las anotaciones, corregir, commit y push hasta que salga en verde. El APK queda como artefacto
    `jarvis-debug-apk` (el usuario lo descarga desde Actions; no hace falta Android Studio).
 3. Desplegar el servidor en Render con `render.yaml` (New → Blueprint); el usuario pone las claves.
+   Claves: `OPENAI_API_KEY`, `UN_COMTRADE_API_KEY`, `GOOGLE_MAPS_API_KEY`, `OPUSCLIP_API_KEY`, `OSM_CONTACT`.
+4b. Clips: el usuario necesita plan de OpusClip con API y su YouTube conectado en OpusClip; la primera
+   prueba real debe confirmar los campos de la API ([[07-RESEARCH/opusclip-youtube]]).
 4. Pruebas en el teléfono (plan 1–16 de `JARVIS/tests/README.md`); registrar en `08-TESTS/`.
 
 Antes de empezar: `.claude/skills/android-build/scripts/diagnose.sh` dice qué se puede verificar en

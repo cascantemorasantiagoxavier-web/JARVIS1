@@ -5,7 +5,7 @@ generado-desde: JARVIS/shared/tools.json (scripts/skills/tools_doc.py)
 ---
 # Catálogo de herramientas
 
-46 herramientas en `JARVIS/shared/tools.json`, la fuente única para chat, voz Realtime, botones y
+49 herramientas en `JARVIS/shared/tools.json`, la fuente única para chat, voz Realtime, botones y
 habilidades. Si esta nota y el archivo difieren, manda el archivo. Regenerar con
 `python3 -I scripts/skills/tools_doc.py`.
 
@@ -55,11 +55,14 @@ habilidades. Si esta nota y el archivo difieren, manda el archivo. Regenerar con
 | `describe_skill` | device | lectura | no | — | Devuelve los parámetros detallados, permisos, costos y límites de una habilidad antes de usarla. |
 | `run_skill` | device | lectura | no | — | Ejecuta una habilidad con entrada validada. Devuelve un resultado estructurado verificable (estado, resumen, datos, fuentes, avisos). Las acciones que afectan a terceros piden confirmación en pantalla. |
 
-## Internas, solo para habilidades (9)
+## Internas, solo para habilidades (12)
 No se ofrecen al modelo directamente; las usan las habilidades a través de `SkillContext.tool()`.
 
 | Herramienta | Dónde | Riesgo | Confirma | Permisos | Descripción |
 |---|---|---|---|---|---|
+| `clips_create` | backend | externa | no | — | Envía un video a OpusClip para recortarlo en clips cortos con IA (gasta créditos de tu plan de OpusClip). El enlace debe ser público (YouTube, Drive, Vimeo, MP4…). |
+| `clips_status` | backend | lectura | no | — | Estado de un proyecto de clips de OpusClip y, si terminó, la lista numerada de clips. |
+| `clips_publish` | backend | sensible | sí | — | Publica en YouTube, a través de OpusClip, un clip con el título, la descripción y la privacidad indicados; publica solo videos tuyos o con permiso, porque YouTube sanciona las infracciones de derechos de autor. Se puede programar con publish_at. |
 | `open_map_point` | device | lectura | no | — | Abre unas coordenadas en la app de mapas (ver o ruta). Solo coordenadas con fuente. |
 | `find_place` | device | lectura | no | — | Busca un lugar (ciudad, barrio, cantón) y devuelve candidatos con coordenadas y fuente (Open-Meteo/GeoNames). |
 | `compose_email` | device | externa | no | — | Abre la app de correo con un borrador (destinatarios, asunto, cuerpo). No envía: el usuario revisa y pulsa enviar. |

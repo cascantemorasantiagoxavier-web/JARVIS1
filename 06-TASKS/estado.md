@@ -22,6 +22,8 @@ actualizado: 2026-10-23
 - [x] App: integración de habilidades (Room v2, cámara, selector, grabadora, pantalla *Skills*),
       verificada con el arnés de tipos.
 - [x] 8 skills de Claude Code con scripts probados; `docs/SKILLS.md`; ADR-013, 014 y 015.
+- [x] Clips de video con OpusClip y publicación en YouTube vía OpusClip (habilidad `video_clips`,
+      PARCIAL hasta la primera prueba real). ADR-017.
 - [x] Claves del usuario analizadas; integradas UN Comtrade (`trade_statistics`) y Google Places
       (verificación de negocios, datos restringidos). ADR-016.
 

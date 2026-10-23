@@ -22,5 +22,6 @@ actualizado: 2026-10-23
 | [[05-DECISIONS/ADR-014-riesgo-y-confirmacion\|ADR-014]] | Niveles de riesgo y política de confirmación | Aceptada | 2026-10-23 |
 | [[05-DECISIONS/ADR-015-vision-y-transcripcion\|ADR-015]] | Visión y transcripción en el servidor; captura solo por acción del usuario | Aceptada | 2026-10-23 |
 | [[05-DECISIONS/ADR-016-apis-del-usuario\|ADR-016]] | Integrar UN Comtrade y Google Places (con restricciones); descartar el resto de claves de Google Cloud | Aceptada | 2026-10-23 |
+| [[05-DECISIONS/ADR-017-clips-opusclip-youtube\|ADR-017]] | Clips con OpusClip y publicación en YouTube a través de OpusClip (privado por defecto) | Aceptada | 2026-10-23 |
 
 Nuevas decisiones: copiar el formato (Contexto, Decisión, Consecuencias) con el siguiente número.

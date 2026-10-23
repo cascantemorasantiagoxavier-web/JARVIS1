@@ -17,11 +17,11 @@ servicios reales (OpenAI, OSM, cámara, micrófono), que quedan NO TESTEADO hast
 Cómo añadir una habilidad: `JARVIS/docs/SKILLS.md`. Decisiones: [[05-DECISIONS/ADR-013-sistema-de-habilidades|ADR-013]],
 [[05-DECISIONS/ADR-014-riesgo-y-confirmacion|ADR-014]].
 
-Total: 44 habilidades · pruebas genéricas de contrato para todas: 13 (SkillContractTest)
+Total: 45 habilidades · pruebas genéricas de contrato para todas: 13 (SkillContractTest)
 
-Resumen sin configurar nada: IMPLEMENTADA 30, PARCIAL 7, REQUIERE_CONFIGURACIÓN 7
+Resumen sin configurar nada: IMPLEMENTADA 30, PARCIAL 7, REQUIERE_CONFIGURACIÓN 8
 
-Resumen con servidor y bóveda: IMPLEMENTADA 37, PARCIAL 7
+Resumen con servidor y bóveda: IMPLEMENTADA 37, PARCIAL 8
 
 | Habilidad | Categoría | Riesgo | Sin configurar | Con servidor y bóveda | Pendiente | Pruebas específicas | Sin probar en teléfono |
 |---|---|---|---|---|---|---|---|
@@ -65,6 +65,7 @@ Resumen con servidor y bóveda: IMPLEMENTADA 37, PARCIAL 7
 | `supplier_verifier` Verificador de proveedores | negocio | lectura | IMPLEMENTADA | IMPLEMENTADA | — | 1 | — |
 | `task_manager` Gestor de tareas | asistente | sensible | IMPLEMENTADA | IMPLEMENTADA | — | 2 | avisos |
 | `travel_planner` Planificador de viajes | asistente | modifica local | IMPLEMENTADA | IMPLEMENTADA | — | 1 | avisos |
+| `video_clips` Clips de video y YouTube | marketing | sensible | REQUIERE_CONFIGURACIÓN (requiere servidor) | PARCIAL | contrato de la API de OpusClip tomado de un conector de terceros (la documentación oficial no fue accesible): confirmar con la primera prueba real; aviso automático cuando los clips están listos (hoy se pregunta a JARVIS) | 3 | — |
 | `visual_scene_assistant` Asistente visual | medios | lectura | REQUIERE_CONFIGURACIÓN (requiere servidor) | IMPLEMENTADA | — | 1 | cámara |
 | `voice_memo_inbox` Bandeja de notas de voz | productividad | modifica local | IMPLEMENTADA | IMPLEMENTADA | — | 3 | avisos, guardar archivo, micrófono |
 | `website_builder` Creador de sitios web | marketing | modifica local | PARCIAL | PARCIAL | publicación automática en un hosting (se entrega el archivo HTML) | 1 | guardar archivo |

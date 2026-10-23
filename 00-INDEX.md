@@ -41,6 +41,7 @@ Memoria de largo plazo del proyecto. El código vive en `../JARVIS/` (ver `JARVI
 - [[07-RESEARCH/osm-costa-rica|OpenStreetMap y Costa Rica]]
 - [[07-RESEARCH/entorno-de-desarrollo|Limitaciones del entorno de desarrollo]]
 - [[07-RESEARCH/apis-del-usuario|APIs que tiene el usuario (qué sirve y qué no)]]
+- [[07-RESEARCH/opusclip-youtube|Clips con OpusClip y publicación en YouTube]]
 
 ## 08 · Pruebas
 - [[08-TESTS/2026-10-23-resultados|Resultados 2026-10-23]]
