@@ -17,14 +17,14 @@ Claude Code en `JARVIS/.claude/skills/` con scripts probados. La app Android est
 emulador ni teléfono. **No existe APK.**
 
 ## Próxima tarea concreta
-1. Cuando el usuario instale la app de Claude en GitHub: `git push -u origin main:jarvis-v0.1-habilidades`
-   (remoto ya configurado en `JARVIS`). El push dispara `.github/workflows/build.yml`.
+1. Hecho (2026-10-23): código en `cascantemorasantiagoxavier-web/JARVIS`, rama `jarvis-v0.1-habilidades`
+   (`master` es su proyecto anterior, intacto). Esta KB en el repo **privado** `JARVIS1` (rama `main`).
+   Cada push a la rama dispara `.github/workflows/build.yml`.
 2. Seguir la ejecución con la API pública (ver skill `android-build`): si falla la compilación del APK,
    leer las anotaciones, corregir, commit y push hasta que salga en verde. El APK queda como artefacto
    `jarvis-debug-apk` (el usuario lo descarga desde Actions; no hace falta Android Studio).
 3. Desplegar el servidor en Render con `render.yaml` (New → Blueprint); el usuario pone las claves.
 4. Pruebas en el teléfono (plan 1–16 de `JARVIS/tests/README.md`); registrar en `08-TESTS/`.
-5. Subir `JARVIS-KB` a un repositorio privado cuando el usuario lo cree.
 
 Antes de empezar: `.claude/skills/android-build/scripts/diagnose.sh` dice qué se puede verificar en
 esa máquina. Al terminar: skill `session-continuity`.
