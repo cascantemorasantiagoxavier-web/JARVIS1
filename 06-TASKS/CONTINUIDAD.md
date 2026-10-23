@@ -7,27 +7,21 @@ actualizado: 2026-10-23
 **Para quien retome el trabajo (persona o agente): empieza aquí.**
 
 ## Dónde quedó
-Versión 0.1 + **sistema de habilidades**. Backend 65 pruebas y núcleo 138 pruebas, todas en verde
-(AUTOMATIZADO, servicios externos simulados). 44 habilidades de la app con estado real en
-[[02-ARCHITECTURE/habilidades|el catálogo]] (37 implementadas y 7 parciales con servidor y bóveda).
-Visión (`/api/vision/analyze`) y transcripción (`/api/audio/transcribe`) en el servidor. 8 skills de
-Claude Code en `JARVIS/.claude/skills/` con scripts probados. La app Android está escrita entera
-(incluida la integración de habilidades: Room v2, cámara, selector, grabadora, pantalla *Skills*) pero
-**nunca se ha compilado con el Android Gradle Plugin ni ejecutado**: el entorno no tiene Google Maven,
-emulador ni teléfono. **No existe APK.**
+Versión 0.1 + habilidades + **JARVIS Web**. Código en `cascantemorasantiagoxavier-web/JARVIS`, rama
+`jarvis-v0.1-habilidades` (`master` es su proyecto anterior, intacto); esta KB en el repo privado
+`JARVIS1` (`main`). GitHub Actions en verde: núcleo, **APK compilado con AGP** (publicado en la Release
+`jarvis-ultimo`) y pruebas Robolectric de la app. Backend 84 pruebas + 9 de navegador (Chromium real).
+El usuario prefiere la **web**: el servidor sirve el HUD en `/` ([[05-DECISIONS/ADR-018-jarvis-web|ADR-018]]).
+Nada se ha probado todavía contra OpenAI ni OpusClip reales, ni en un teléfono.
 
 ## Próxima tarea concreta
-1. Hecho (2026-10-23): código en `cascantemorasantiagoxavier-web/JARVIS`, rama `jarvis-v0.1-habilidades`
-   (`master` es su proyecto anterior, intacto). Esta KB en el repo **privado** `JARVIS1` (rama `main`).
-   Cada push a la rama dispara `.github/workflows/build.yml`.
-2. Seguir la ejecución con la API pública (ver skill `android-build`): si falla la compilación del APK,
-   leer las anotaciones, corregir, commit y push hasta que salga en verde. El APK queda como artefacto
-   `jarvis-debug-apk` (el usuario lo descarga desde Actions; no hace falta Android Studio).
-3. Desplegar el servidor en Render con `render.yaml` (New → Blueprint); el usuario pone las claves.
-   Claves: `OPENAI_API_KEY`, `UN_COMTRADE_API_KEY`, `GOOGLE_MAPS_API_KEY`, `OPUSCLIP_API_KEY`, `OSM_CONTACT`.
-4b. Clips: el usuario necesita plan de OpusClip con API y su YouTube conectado en OpusClip; la primera
-   prueba real debe confirmar los campos de la API ([[07-RESEARCH/opusclip-youtube]]).
-4. Pruebas en el teléfono (plan 1–16 de `JARVIS/tests/README.md`); registrar en `08-TESTS/`.
+1. Que el usuario despliegue en Render (New → Blueprint con `render.yaml`) y ponga sus claves en
+   Environment. Después abrir `https://<servicio>.onrender.com/`, pegar `JARVIS_CLIENT_TOKEN` y seguir
+   la lista manual «JARVIS Web en un navegador real» de `JARVIS/tests/README.md`; registrar en `08-TESTS/`.
+2. Si algo falla en Render: `/health` dice qué está activo; los logs de Render no muestran claves.
+3. Clips: plan de OpusClip con API y YouTube conectado en OpusClip; la primera prueba real debe
+   confirmar los campos de la API ([[07-RESEARCH/opusclip-youtube]]).
+4. App Android (opcional ahora): instalar el APK de la Release y seguir el plan 1–16 de `tests/README.md`.
 
 Antes de empezar: `.claude/skills/android-build/scripts/diagnose.sh` dice qué se puede verificar en
 esa máquina. Al terminar: skill `session-continuity`.
@@ -38,25 +32,24 @@ esa máquina. Al terminar: skill `session-continuity`.
   habilidad recibe "cancelado" (aceptable, pero comprobarlo).
 - Visión y transcripción probadas solo con OpenAI simulado; confirmar que el modelo de texto
   configurado acepta imágenes (`OPENAI_VISION_MODEL`).
-- Versiones de AndroidX sin verificar.
+- Versiones de AndroidX: resueltas y compiladas en GitHub Actions (no en este entorno).
+- JARVIS Web: token en `localStorage` (no cifrado); avisos de tareas solo con la página abierta.
 - `voice/wakeword` variante `sherpa`: API escrita sin compilar contra el AAR.
 - Contrato Realtime verificado con el SDK de npm, no contra la API real.
 - Precio de `gpt-realtime-2.1` (modelo completo) sin confirmar.
 
 ## Archivos clave
 - `JARVIS/CLAUDE.md` — mapa del código y reglas.
-- `JARVIS/docs/SETUP.md` — instalación.
+- `JARVIS/docs/SETUP.md` — instalación (incluye «Usar JARVIS Web»).
+- `JARVIS/backend/public/js/` — JARVIS Web (`main.js`, `brain.js`, `tools.js`, `realtime.js`).
 - `JARVIS/shared/tools.json` — herramientas.
 - `JARVIS/app/Android/core/.../brain/JarvisBrain.kt` — cerebro.
 - `JARVIS/app/Android/core/.../realtime/RealtimeSessionController.kt` — voz.
 - `JARVIS/app/Android/app/.../AppContainer.kt` — conexión de todo en Android.
 
 ## Esperando al usuario
-- **Clave de OpenAI** en `backend/.env` (no la tiene en su lista; sin ella no hay voz, chat, visión).
-- Instalar la app de Claude en GitHub (`cascantemorasantiagoxavier-web/JARVIS`): la subida dio 403.
-  El código está commiteado en local, con el remoto `origin` ya configurado; rama prevista
-  `jarvis-v0.1-habilidades` (no tocar `master`).
-- Poner `UN_COMTRADE_API_KEY` y `GOOGLE_MAPS_API_KEY` en el servidor; activar Places API (New) y
-  restringir la clave ([[07-RESEARCH/apis-del-usuario]]).
-- Servidor en **Render** (confirmado por el usuario; ya tiene allí sus claves, su servicio anterior usaba `OPENAI_API_KEY`). `JARVIS/render.yaml` listo (Blueprint); falta subir el código a GitHub y desplegar.
-- Modelo de su teléfono y versión de Android.
+- Desplegar en Render y poner `OPENAI_API_KEY` (sin ella no hay chat, voz ni visión), `OSM_CONTACT`,
+  y si quiere `UN_COMTRADE_API_KEY`, `GOOGLE_MAPS_API_KEY` (activar Places API (New) y restringirla) y
+  `OPUSCLIP_API_KEY`. Nunca por chat ([[07-RESEARCH/apis-del-usuario]]).
+- Decirnos la URL pública del servicio (solo la URL) para comprobar `/health`.
+- Modelo de su teléfono y versión de Android, si va a usar también la app.

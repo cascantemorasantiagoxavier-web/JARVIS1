@@ -27,6 +27,11 @@ actualizado: 2026-10-23
 - [x] Claves del usuario analizadas; integradas UN Comtrade (`trade_statistics`) y Google Places
       (verificación de negocios, datos restringidos). ADR-016.
 
+- [x] Primera compilación real del APK y pruebas Robolectric en GitHub Actions; APK publicado en la
+      Release `jarvis-ultimo`.
+- [x] JARVIS Web (`backend/public`): HUD, chat con herramientas, voz WebRTC, paneles; 6 pruebas de
+      servidor + 9 en Chromium real. ADR-018.
+
 ## Pendiente (requiere al usuario o un entorno sin bloqueos)
 - [ ] Compilar con AGP y generar el APK: listo el flujo de GitHub Actions (`.github/workflows/build.yml`,
       validado con actionlint); se ejecutará con el primer push. Alternativa: `scripts/build-apk.sh`.

@@ -112,3 +112,27 @@ Multiplatform 1.8.2 de escritorio y stubs mínimos para lo que falta. Resultado 
 2. Instala en el teléfono y sigue el plan manual de `JARVIS/tests/README.md`.
 3. `cd backend && npm run test:live` con el `.env` real.
 4. Anota aquí resultados con modelo de teléfono y versión de Android.
+
+## Ronda: APK en CI y JARVIS Web (2026-10-23, tarde)
+
+| Suite | Resultado | Clasificación | Dónde |
+|---|---|---|---|
+| Backend `npm test` | 84/84 | **AUTOMATIZADO** | local (Node 22), sin red |
+| JARVIS Web `npm run test:e2e` | 9/9 | **AUTOMATIZADO** (Chromium headless 1194, Playwright 1.56.1) | local |
+| Núcleo `:core:test` | verde | **AUTOMATIZADO** | GitHub Actions, ejecución 39971062825 |
+| APK `assembleDebug` | generado (35 MB) | **AUTOMATIZADO** (compilación) | GitHub Actions; Release `jarvis-ultimo` |
+| App Robolectric `:app:testDebugUnitTest` | verde (HomeUiTest corregido con reloj pausado) | **AUTOMATIZADO** | GitHub Actions |
+| Voz web con OpenAI real | — | **NO TESTEADO** | sin clave ni red hacia OpenAI |
+| JARVIS Web desplegada en Render | — | **NO TESTEADO** | falta que el usuario despliegue |
+
+Qué cubren las 9 pruebas de navegador (`backend/test/e2e/web.e2e.js`): token y conexión; HUD, reloj,
+clima y globo dibujado; chat con `business_search` de punta a punta (navegador → Express → OpenAI
+simulado → herramienta en el navegador → segunda ronda con `function_call_output`); confirmación de
+`forget` cancelada sin borrar; texto del modelo sin HTML ni enlaces `javascript:`; tareas con fecha en
+español y memoria privada fuera de las instrucciones; clips → «Subir a YouTube» con confirmación y
+privacidad `private`; **voz WebRTC real** contra un segundo `RTCPeerConnection` que hace de OpenAI
+(SDP, `session.update` con herramientas, herramienta por voz, `end_conversation` y colgado); móvil
+390×844 sin desbordes.
+
+Bugs encontrados por estas pruebas y corregidos: el panel lateral tapaba el menú (no se podía cambiar
+de panel); el globo se solapaba con el estado y el botón; punto doble tras «p. m.» al crear tareas.
