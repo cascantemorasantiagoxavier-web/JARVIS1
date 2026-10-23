@@ -144,6 +144,7 @@ de panel); el globo se solapaba con el estado y el botón; punto doble tras «p.
 |---|---|---|---|
 | Backend `npm test` | 85/85 | **AUTOMATIZADO** | local |
 | JARVIS Web `npm run test:e2e` | 14/14 | **AUTOMATIZADO** (Chromium 1194) | local |
+| JARVIS Web en CI | 14/14 + 85/85; APK y Robolectric también en verde | **AUTOMATIZADO** | GitHub Actions, ejecución 40004045716 |
 | Foto con OpenAI real / dictado con OpenAI real | — | **NO TESTEADO** | sin clave ni red |
 | Instalar en un teléfono real, avisos de Android | — | **NO TESTEADO** | sin dispositivo |
 
