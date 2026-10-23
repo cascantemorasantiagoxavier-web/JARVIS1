@@ -119,6 +119,7 @@ Multiplatform 1.8.2 de escritorio y stubs mínimos para lo que falta. Resultado 
 |---|---|---|---|
 | Backend `npm test` | 84/84 | **AUTOMATIZADO** | local (Node 22), sin red |
 | JARVIS Web `npm run test:e2e` | 9/9 | **AUTOMATIZADO** (Chromium headless 1194, Playwright 1.56.1) | local |
+| JARVIS Web en CI | 9/9 + 84/84 del servidor | **AUTOMATIZADO** | GitHub Actions, ejecución 39974699365 (capturas: artefacto `jarvis-web-capturas`) |
 | Núcleo `:core:test` | verde | **AUTOMATIZADO** | GitHub Actions, ejecución 39971062825 |
 | APK `assembleDebug` | generado (35 MB) | **AUTOMATIZADO** (compilación) | GitHub Actions; Release `jarvis-ultimo` |
 | App Robolectric `:app:testDebugUnitTest` | verde (HomeUiTest corregido con reloj pausado) | **AUTOMATIZADO** | GitHub Actions |
