@@ -48,6 +48,11 @@ esa máquina. Al terminar: skill `session-continuity`.
 - `JARVIS/app/Android/core/.../realtime/RealtimeSessionController.kt` — voz.
 - `JARVIS/app/Android/app/.../AppContainer.kt` — conexión de todo en Android.
 
+## Despliegue
+Servicio en Render: `https://jarvis-9zmd.onrender.com` (URL solo en esta KB privada, no en el repositorio
+público). `/health` OK el 2026-10-24. Falta `EXA_API_KEY` en Render. El usuario pegó por error el Deploy
+Hook en el chat: se le pidió regenerarlo.
+
 ## Esperando al usuario
 - Crear el servicio en Render (Blueprint o «Public Git Repository», rama `jarvis-v0.1-habilidades`, raíz
   `backend`) y poner `GEMINI_API_KEY`, `OSM_CONTACT` y `JARVIS_CLIENT_TOKEN`; opcionales `LLAMA_API_KEY`,
