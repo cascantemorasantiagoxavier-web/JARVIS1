@@ -53,6 +53,11 @@ Servicio en Render: `https://jarvis-9zmd.onrender.com` (URL solo en esta KB priv
 público). `/health` OK el 2026-10-24. Falta `EXA_API_KEY` en Render. El usuario pegó por error el Deploy
 Hook en el chat: se le pidió regenerarlo.
 
+## Si el chat falla en Render
+1. Ajustes → **Probar la IA**: dice si falla el chat simple, el chat con herramientas o la voz, con el
+   motivo de Google. 2. Logs de Render: línea `upstream_error_status` (proveedor, estado y detalle).
+3. Variables útiles: `GEMINI_MODEL` (fijar un modelo concreto), `GEMINI_FALLBACK_MODELS`, `AI_PROVIDERS`.
+
 ## Esperando al usuario
 - Crear el servicio en Render (Blueprint o «Public Git Repository», rama `jarvis-v0.1-habilidades`, raíz
   `backend`) y poner `GEMINI_API_KEY`, `OSM_CONTACT` y `JARVIS_CLIENT_TOKEN`; opcionales `LLAMA_API_KEY`,
