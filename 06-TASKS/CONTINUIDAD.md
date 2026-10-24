@@ -51,7 +51,7 @@ esa máquina. Al terminar: skill `session-continuity`.
 ## Esperando al usuario
 - Crear el servicio en Render (Blueprint o «Public Git Repository», rama `jarvis-v0.1-habilidades`, raíz
   `backend`) y poner `GEMINI_API_KEY`, `OSM_CONTACT` y `JARVIS_CLIENT_TOKEN`; opcionales `LLAMA_API_KEY`,
-  `UN_COMTRADE_API_KEY`, `GOOGLE_MAPS_API_KEY`, `TAVILY_API_KEY`/`BRAVE_API_KEY`. Nunca por chat.
+  `UN_COMTRADE_API_KEY`, `GOOGLE_MAPS_API_KEY`, `EXA_API_KEY` (eligió Exa para buscar). Nunca por chat.
 - Decirnos la URL pública (solo la URL) para comprobar `/health` (`features.ai`, `features.voice`).
 - Primera prueba real con Gemini: chat con herramientas, foto, dictado y voz en vivo; registrar en `08-TESTS/`.
 - Pendientes de su lista: YouTube Data API v3 (búsqueda de videos), Firebase (sincronizar memoria), Spotify.

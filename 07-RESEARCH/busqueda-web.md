@@ -24,3 +24,10 @@ Implementados en `JARVIS/backend/src/services/search/providers.js`. Orden con `S
 ## Estado
 Probado con respuestas simuladas (AUTOMATIZADO). Con proveedores reales: NO TESTEADO (bloqueados
 en el entorno de desarrollo). Recomendación: configurar SearXNG o Tavily primero.
+
+## Exa (añadido 2026-10-24)
+- `POST https://api.exa.ai/search`, clave en la cabecera `x-api-key` (SDK oficial `exa-js` 2.26.0).
+- JARVIS envía `type: "auto"`, `numResults`, `includeDomains`, `userLocation: "CR"` y pide extractos con
+  `contents.highlights` (600 caracteres). Resultados: `title`, `url`, `publishedDate`, `highlights[]`.
+- Orden en `SEARCH_PROVIDERS=auto`: searxng, tavily, **exa**, brave, openai, wikipedia.
+- Créditos gratis al registrarse (condiciones de Exa; verificarlas en su página antes de presupuestar).

@@ -30,6 +30,7 @@ además Brave, Tavily, Open-Meteo, OSM/Overpass, UN Comtrade, Firebase y Spotify
 | Google Calendar API | No: exige OAuth del usuario; la app lee el calendario del teléfono y la web abre Google Calendar |
 | YouTube Data API v3 | Pendiente: herramienta de búsqueda de videos (clave simple, cuota diaria) |
 | Brave / Tavily | Ya soportadas (`BRAVE_API_KEY`, `TAVILY_API_KEY`) |
+| **Exa** (elegida por el usuario para buscar en la web) | Integrada el 2026-10-24 (`EXA_API_KEY`); contrato del SDK oficial `exa-js` 2.26.0; AUTOMATIZADO con datos simulados; `api.exa.ai` no es accesible desde este entorno |
 | Open-Meteo, OSM/Overpass, UN Comtrade | Ya integradas |
 | Firebase, Spotify | Pendientes; Firebase serviría para sincronizar la memoria entre equipos |
 
