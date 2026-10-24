@@ -1,6 +1,6 @@
 ---
 tipo: tareas
-actualizado: 2026-10-23
+actualizado: 2026-10-24
 ---
 # Estado de las tareas
 
@@ -34,6 +34,9 @@ actualizado: 2026-10-23
 
 - [x] JARVIS Web completa: foto, dictado, instalable (service worker, iconos), copia de seguridad,
       modo sin conexión; 85 + 14 pruebas.
+
+- [x] Gemini como cerebro con Llama de respaldo (chat, fotos, dictado) y voz Gemini Live en la web.
+      ADR-019; 96 + 17 pruebas.
 
 ## Pendiente (requiere al usuario o un entorno sin bloqueos)
 - [ ] Compilar con AGP y generar el APK: listo el flujo de GitHub Actions (`.github/workflows/build.yml`,

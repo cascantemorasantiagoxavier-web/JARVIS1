@@ -1,6 +1,6 @@
 ---
 tipo: continuidad
-actualizado: 2026-10-23
+actualizado: 2026-10-24
 ---
 # Nota de continuidad
 
@@ -12,6 +12,7 @@ Versión 0.1 + habilidades + **JARVIS Web**. Código en `cascantemorasantiagoxav
 `JARVIS1` (`main`). GitHub Actions en verde: núcleo, **APK compilado con AGP** (publicado en la Release
 `jarvis-ultimo`) y pruebas Robolectric de la app. Backend 85 pruebas + 14 de navegador (Chromium real): chat, voz, foto, dictado, paneles, copia de seguridad, instalable y sin conexión.
 El usuario prefiere la **web**: el servidor sirve el HUD en `/` ([[05-DECISIONS/ADR-018-jarvis-web|ADR-018]]).
+**Cerebro: Gemini** (no OpenAI), Llama de respaldo ([[05-DECISIONS/ADR-019-gemini-cerebro|ADR-019]]); voz de la web con Gemini Live.
 Nada se ha probado todavía contra OpenAI ni OpusClip reales, ni en un teléfono.
 
 ## Próxima tarea concreta
@@ -48,8 +49,9 @@ esa máquina. Al terminar: skill `session-continuity`.
 - `JARVIS/app/Android/app/.../AppContainer.kt` — conexión de todo en Android.
 
 ## Esperando al usuario
-- Desplegar en Render y poner `OPENAI_API_KEY` (sin ella no hay chat, voz ni visión), `OSM_CONTACT`,
-  y si quiere `UN_COMTRADE_API_KEY`, `GOOGLE_MAPS_API_KEY` (activar Places API (New) y restringirla) y
-  `OPUSCLIP_API_KEY`. Nunca por chat ([[07-RESEARCH/apis-del-usuario]]).
-- Decirnos la URL pública del servicio (solo la URL) para comprobar `/health`.
-- Modelo de su teléfono y versión de Android, si va a usar también la app.
+- Crear el servicio en Render (Blueprint o «Public Git Repository», rama `jarvis-v0.1-habilidades`, raíz
+  `backend`) y poner `GEMINI_API_KEY`, `OSM_CONTACT` y `JARVIS_CLIENT_TOKEN`; opcionales `LLAMA_API_KEY`,
+  `UN_COMTRADE_API_KEY`, `GOOGLE_MAPS_API_KEY`, `TAVILY_API_KEY`/`BRAVE_API_KEY`. Nunca por chat.
+- Decirnos la URL pública (solo la URL) para comprobar `/health` (`features.ai`, `features.voice`).
+- Primera prueba real con Gemini: chat con herramientas, foto, dictado y voz en vivo; registrar en `08-TESTS/`.
+- Pendientes de su lista: YouTube Data API v3 (búsqueda de videos), Firebase (sincronizar memoria), Spotify.

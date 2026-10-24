@@ -24,5 +24,6 @@ actualizado: 2026-10-23
 | [[05-DECISIONS/ADR-016-apis-del-usuario\|ADR-016]] | Integrar UN Comtrade y Google Places (con restricciones); descartar el resto de claves de Google Cloud | Aceptada | 2026-10-23 |
 | [[05-DECISIONS/ADR-017-clips-opusclip-youtube\|ADR-017]] | Clips con OpusClip y publicación en YouTube a través de OpusClip (privado por defecto) | Aceptada | 2026-10-23 |
 | [[05-DECISIONS/ADR-018-jarvis-web\|ADR-018]] | JARVIS Web servida por el mismo servidor, con el mismo contrato y política de riesgo | Aceptada | 2026-10-23 |
+| [[05-DECISIONS/ADR-019-gemini-cerebro\|ADR-019]] | Gemini como cerebro, Llama de respaldo y proveedores intercambiables | Aceptada | 2026-10-24 |
 
 Nuevas decisiones: copiar el formato (Contexto, Decisión, Consecuencias) con el siguiente número.

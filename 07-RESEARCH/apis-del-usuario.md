@@ -1,6 +1,6 @@
 ---
 tipo: investigacion
-actualizado: 2026-10-23
+actualizado: 2026-10-24
 ---
 # APIs que el usuario tiene (solo nombres, nunca valores)
 
@@ -14,12 +14,28 @@ el chat ni se guarda aquí. Valores: solo en `backend/.env` del servidor o en lo
 | `GOOGLE_MAPS_API_KEY` | **Sí** | Segunda fuente al verificar un negocio (Places API (New)) | Integrada; AUTOMATIZADO con datos simulados; requiere activar la API y facturación |
 | `GOOGLE_CALENDAR_API_KEY` | No | Una clave simple solo lee calendarios **públicos** (según la documentación de Google; no se pudo releer hoy). El teléfono ya lee tu calendario (incluido Google Calendar sincronizado) por Android, sin clave | — |
 | `CALENDAR_MCP_API_KEY` | No | No hay servidor MCP de calendario en JARVIS | — |
-| `GOOGLE_CLOUD_API_KEY` | No por ahora | Genérica. Si es una clave de Gemini (AI Studio) podría servir de modelo alternativo o búsqueda con Google; no integrado | Decisión pendiente del usuario |
+| `GEMINI_API_KEY` (Google AI Studio) | **Sí: el cerebro** | Chat con herramientas, fotos, dictado y voz en vivo (Gemini Live) ([[05-DECISIONS/ADR-019-gemini-cerebro|ADR-019]]). El usuario dijo «ya tienes conexión» con AI Studio | Integrada; AUTOMATIZADO con Gemini simulado; nunca con su clave real |
+| `LLAMA_API_KEY` | Opcional | Respaldo si Gemini se queda sin cuota (Groq por defecto) | Integrada; AUTOMATIZADO con datos simulados |
+| `GOOGLE_CLOUD_API_KEY` | No | Genérica. Si en realidad es de AI Studio, va como `GEMINI_API_KEY` | — |
 | BigQuery (×7), Cloud Storage (×2), Cloud SQL, Datastore, Dataplex, Dataform, Logging, Monitoring, Trace, Telemetry, App Topology, Analytics Hub, Service Management, Service Usage | No | Son las APIs que Google Cloud **activa por defecto** en un proyecto nuevo; casi todas exigen cuenta de servicio/OAuth, no una clave simple. JARVIS no necesita base de datos en la nube | Recomendación: no crear claves para ellas o borrarlas |
 
+## Lista del usuario del 2026-10-24 (pegada en el chat, sin claves)
+Gemini (cerebro), Places API (New), Maps SDK for Android, Google Calendar API, YouTube Data API v3;
+además Brave, Tavily, Open-Meteo, OSM/Overpass, UN Comtrade, Firebase y Spotify.
+| Servicio | Estado en JARVIS |
+|---|---|
+| Gemini | **Cerebro** (ADR-019) |
+| Places API (New) | Ya integrada para **verificar** negocios (ADR-016); la búsqueda principal sigue en OSM |
+| Maps SDK for Android | No: la app usa osmdroid (OSM, gratis). Cambiarlo exige clave restringida a la app |
+| Google Calendar API | No: exige OAuth del usuario; la app lee el calendario del teléfono y la web abre Google Calendar |
+| YouTube Data API v3 | Pendiente: herramienta de búsqueda de videos (clave simple, cuota diaria) |
+| Brave / Tavily | Ya soportadas (`BRAVE_API_KEY`, `TAVILY_API_KEY`) |
+| Open-Meteo, OSM/Overpass, UN Comtrade | Ya integradas |
+| Firebase, Spotify | Pendientes; Firebase serviría para sincronizar la memoria entre equipos |
+
 ## Lo que falta y es imprescindible
-- **`OPENAI_API_KEY`**: no está en la lista. Sin ella no hay voz GPT Realtime, chat con IA, visión ni
-  transcripción. Se crea en platform.openai.com (con saldo) y va en `backend/.env`.
+- **`GEMINI_API_KEY`** en Render (el usuario no usará OpenAI). Sin ella no hay chat con IA, fotos,
+  dictado ni voz en vivo.
 - **Búsqueda web**: sin `TAVILY_API_KEY`, `BRAVE_API_KEY` o un SearXNG propio, solo queda Wikipedia
   (pobre para precios, proveedores y noticias). Opción más simple: Tavily (plan gratuito con créditos).
 

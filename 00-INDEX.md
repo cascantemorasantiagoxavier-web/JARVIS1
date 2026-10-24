@@ -10,7 +10,7 @@ Memoria de largo plazo del proyecto. El código vive en `../JARVIS/` (ver `JARVI
 ## Empieza aquí
 - [[06-TASKS/CONTINUIDAD|Nota de continuidad]]: dónde quedó el trabajo y qué sigue.
 - [[06-TASKS/estado|Estado de las tareas]]
-- [[08-TESTS/2026-10-23-resultados|Últimos resultados de pruebas]]
+- [[08-TESTS/2026-10-24-gemini|Últimos resultados de pruebas]]
 
 ## 01 · Visión
 - [[01-VISION/vision|Visión y alcance]]
@@ -44,7 +44,9 @@ Memoria de largo plazo del proyecto. El código vive en `../JARVIS/` (ver `JARVI
 - [[07-RESEARCH/opusclip-youtube|Clips con OpusClip y publicación en YouTube]]
 
 ## 08 · Pruebas
+- [[08-TESTS/2026-10-24-gemini|Resultados 2026-10-24 (Gemini)]]
 - [[08-TESTS/2026-10-23-resultados|Resultados 2026-10-23]]
 
 ## 09 · Bitácora
+- [[09-DAILY-LOG/2026-10-24|2026-10-24]]
 - [[09-DAILY-LOG/2026-10-23|2026-10-23]]
